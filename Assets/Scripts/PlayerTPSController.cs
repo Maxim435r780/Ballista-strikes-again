@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerTPSController : MonoBehaviour
 {
-    public float gravity = 9.8f;
+    public float Gravity = 9.8f;
     public float JumpForce = 7;
-    public float speed = 1;
+    public float Speed = 5;
+
+    [SerializeField] private Animator _animator;
 
     private float _fallVelocity = 0;
     private CharacterController _characterController;
@@ -19,24 +21,28 @@ public class PlayerTPSController : MonoBehaviour
     {
         //Move
         _moveVector = Vector3.zero;
+        _animator.SetInteger("Dir", 0);
 
         if (Input.GetKey(KeyCode.W))
         {
             _moveVector += transform.forward;
+            _animator.SetInteger("Dir", 1);
         }
         if (Input.GetKey(KeyCode.A))
         {
             _moveVector -= transform.right;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            _moveVector -= transform.forward;
+            _animator.SetInteger("Dir", 1);
         }
         if (Input.GetKey(KeyCode.D))
         {
             _moveVector += transform.right;
+            _animator.SetInteger("Dir", 1);
         }
-
+        if (Input.GetKey(KeyCode.S))
+        {
+            _moveVector -= transform.forward;
+            _animator.SetInteger("Dir", -1);
+        }
         //Jump
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
         {
@@ -46,14 +52,14 @@ public class PlayerTPSController : MonoBehaviour
     void FixedUpdate()
     {
         //Move
-        _characterController.Move(_moveVector * speed * Time.fixedDeltaTime);
+        _characterController.Move(_moveVector * Speed * Time.fixedDeltaTime);
 
         //Gravity + =Jump
         if (_characterController.isGrounded)
         {
             _fallVelocity = 0;
         }
-        _fallVelocity += gravity * Time.fixedDeltaTime;
+        _fallVelocity += Gravity * Time.fixedDeltaTime;
         _characterController.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
     }
 }

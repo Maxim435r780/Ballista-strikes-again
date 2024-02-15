@@ -584,8 +584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 700
   CameraAxisTransform: {fileID: 95084707}
-  minAngle: -30
-  maxAngle: 60
+  MinAngle: -30
+  MaxAngle: 60
 --- !u!4 &991836111
 Transform:
   m_ObjectHideFlags: 0
@@ -615,9 +615,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f4a099e54c069408eed183b8954f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 9.8
+  Gravity: 9.8
   JumpForce: 7
-  speed: 6
+  Speed: 5
+  _animator: {fileID: 1796871227}
 --- !u!143 &991836114
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1012,6 +1013,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9559750, guid: 100af27711b3f4d4ebc48689ce804635, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 320a2f0034b7fea42ac724609b36dfe8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1020,6 +1025,11 @@ PrefabInstance:
 --- !u!4 &1796871226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 465452, guid: 100af27711b3f4d4ebc48689ce804635, type: 3}
+  m_PrefabInstance: {fileID: 1660818264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1796871227 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9559750, guid: 100af27711b3f4d4ebc48689ce804635, type: 3}
   m_PrefabInstance: {fileID: 1660818264}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1845345240
