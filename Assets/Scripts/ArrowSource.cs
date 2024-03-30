@@ -7,9 +7,11 @@ public class ArrowSource : MonoBehaviour
     public Transform TargetPoint;
     public Camera CameraLink;
     public float TargetInSkyDistance = 20;
+
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()

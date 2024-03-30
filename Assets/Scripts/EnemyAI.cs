@@ -9,9 +9,11 @@ public class EnemyAI : MonoBehaviour
     public PlayerTPSController Player;
     public float viewAngle = 90;
     public int DeadInt = 0;
+    public float damage = 30;
 
     private NavMeshAgent _navMeshAgent;
     private bool isPlayerNoticed;
+    [SerializeField] private PlayerHealth PLHPComp;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (_navMeshAgent.remainingDistance == 0)
+        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
         {
             if (!isPlayerNoticed)
             {
@@ -47,6 +49,10 @@ public class EnemyAI : MonoBehaviour
         if (isPlayerNoticed)
         {
             _navMeshAgent.destination = Player.transform.position;
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            {
+                PLHPComp.DamagePlayer(damage * Time.deltaTime);
+            }
         }
 
         if (DeadInt == 1)

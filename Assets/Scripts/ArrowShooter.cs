@@ -7,11 +7,6 @@ public class ArrowShooter : MonoBehaviour
     public Arrow Projectile;
     public Transform ArrowSourceTransform;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
