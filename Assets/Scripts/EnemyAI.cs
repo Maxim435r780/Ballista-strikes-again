@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour
     public List<Transform> targetPoint;
     public PlayerTPSController Player;
     public float viewAngle = 90;
+    public int DeadInt = 0;
 
     private NavMeshAgent _navMeshAgent;
     private bool isPlayerNoticed;
@@ -46,6 +47,11 @@ public class EnemyAI : MonoBehaviour
         if (isPlayerNoticed)
         {
             _navMeshAgent.destination = Player.transform.position;
+        }
+
+        if (DeadInt == 1)
+        {
+            _navMeshAgent.destination = transform.position;
         }
     }
 
