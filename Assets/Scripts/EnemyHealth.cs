@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float HP = 100;
     public float DeathTimer = 2.5f;
+    public AudioSource AudioDeath;
 
     [SerializeField] private Animator _animator;
 
@@ -14,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        HPPrevFrame = HP + 1;
+        HPPrevFrame = HP - 1;
     }
 
     void Update()
@@ -22,12 +23,18 @@ public class EnemyHealth : MonoBehaviour
         if (HP < HPPrevFrame)
         {
             _animator.SetTrigger("Hit");
+            var audHit = gameObject.GetComponent<AudioSource>();
+            if (HP > 0)
+            {
+                audHit.Play();
+            }
         }
 
         if ((HP <= 0) && (i == 0))
         {
             _animator.SetTrigger("Dead");
             deathTimerMethod();
+            AudioDeath.Play();
             i = 1;
         }
         HPPrevFrame = HP;
