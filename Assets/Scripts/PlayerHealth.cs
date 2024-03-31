@@ -11,7 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public GameObject GamePlayUI;
     public GameObject GameOverUI;
 
+    [SerializeField] private Animator _animator;
     private float MaxHP;
+    private int i = 0;
 
     private void Start()
     {
@@ -30,6 +32,12 @@ public class PlayerHealth : MonoBehaviour
 
         if(HP <= 0)
         {
+            if (i == 0)
+            {
+                _animator.SetTrigger("Death");
+                i = 1;
+            }
+
             GameOverUI.SetActive(true);
             GamePlayUI.SetActive(false);
             GetComponent<PlayerTPSController >().enabled = false;

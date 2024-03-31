@@ -2282,6 +2282,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &913854146 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1849262810795809518, guid: d37db20a424c79d46bbe2e4fb4cc5cce, type: 3}
+  m_PrefabInstance: {fileID: 1419770565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &921974836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5190,7 @@ MonoBehaviour:
   HPValueRectTransform: {fileID: 921974837}
   GamePlayUI: {fileID: 1389879283}
   GameOverUI: {fileID: 265046650}
+  _animator: {fileID: 913854146}
 --- !u!1 &2124823654
 GameObject:
   m_ObjectHideFlags: 0
