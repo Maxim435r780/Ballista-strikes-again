@@ -49,7 +49,7 @@ public class EnemyAI : MonoBehaviour
         if (isPlayerNoticed)
         {
             _navMeshAgent.destination = Player.transform.position;
-            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+            if ((_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance) && (DeadInt == 0))
             {
                 PLHPComp.DamagePlayer(damage * Time.deltaTime);
             }
